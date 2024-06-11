@@ -1,0 +1,23 @@
+#root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+div{
+  border-radius: 1rem;
+  color: aliceblue;
+  background-color: dimgray;
+}
+
+body{
+  background-color: black;
+}
+
+.author-hidden{
+  visibility: hidden;
+}
+
+.author-visible{
+  visibility: visible;
+}
