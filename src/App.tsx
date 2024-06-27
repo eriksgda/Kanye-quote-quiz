@@ -2,12 +2,14 @@ import { useState } from 'react'
 import './global.css'
 
 export function App() {
-  const [quote, setQuote] = useState<string>('');
+  // hooks
+  const [quote, setQuote] = useState<string>('quotes here!');
   const [author, setAuthor] = useState<string>('');
-  const [acertoErro, serAcertoErro] = useState<number[]>([0, 0]);
-  const [quoteCliked, setQuoteClicked] = useState<boolean>(false);
-  const [authorClassName, setAuthorClassName] = useState<string>("author-hidden");
+  const [scoreBoard, setScoreBoard] = useState<number[]>([0, 0]);
+  const [quoteCliked, setQuoteClicked] = useState<boolean>(true);
+  const [authorClassName, setAuthorClassName] = useState<string>('');
 
+  // fetch api kanye
   const fetchYeQuote = () => {
     const urlApi: string = "https://api.kanye.rest"
 
@@ -15,13 +17,14 @@ export function App() {
     .then(response => response.json())
     .then(data => {
       setQuote(data.quote);
-      setAuthor("Kanye West");
+      setAuthor("~ Kanye West");
       setQuoteClicked(false);
       setAuthorClassName("author-hidden");
     })
     .catch(error => console.log(error));
   };
 
+  //fetch api random
   const fetchRandomQuote = () => {
     const urlApi: string = "https://type.fit/api/quotes"
 
@@ -30,7 +33,7 @@ export function App() {
     .then(data => {
       const randomIndex: number = Math.floor(Math.random() * data.length);
       setQuote(data[randomIndex].text);
-      setAuthor("Random Author");
+      setAuthor("~ Random");
       setQuoteClicked(false);
       setAuthorClassName("author-hidden");
 
@@ -38,7 +41,7 @@ export function App() {
     .catch(error => console.log(error));
   };
 
-  
+  // create quote
   const handleClickQuote = () => {
     const randomNum: number = Math.random();
     if (randomNum >= 0.5){
@@ -48,26 +51,49 @@ export function App() {
     }
   };
 
+  // counter
   const handleClickAuthor = (chosenAuthor: string) => {
     setAuthorClassName("author-visible");
     if (chosenAuthor == author){
-      serAcertoErro([acertoErro[0] + 1, acertoErro[1]]);
+      setScoreBoard([scoreBoard[0] + 1, scoreBoard[1]]);
       setQuoteClicked(true);
     } else {
-      serAcertoErro([acertoErro[0], acertoErro[1] + 1]);
+      setScoreBoard([scoreBoard[0], scoreBoard[1] + 1]);
       setQuoteClicked(true);
     }
   }
 
   return (
-    <div>
-      <button onClick={handleClickQuote}>click</button>
-      <p>{quote}</p>
-      <button onClick={() => handleClickAuthor("Kanye West")} disabled={quoteCliked}>Ye's quote</button>
-      <button onClick={() => handleClickAuthor("Random Author")} disabled={quoteCliked}>Random author quote</button>
-      <p className={authorClassName}>{author}</p>
-      <p>Acertos: {acertoErro[0]}</p>
-      <p>Erros: {acertoErro[1]}</p>
+    <div className='x'>
+      <header>
+        <a className='title'href="">Is Ye's Quote?🐻🌊</a>
+      </header>
+
+      <div className="container">
+
+        <button className='buttonCreateQuote' onClick={handleClickQuote}>click</button>
+        <div className='quote'>
+          <p>{quote}</p>
+        </div>
+        <div className='author'>
+          <p className={authorClassName}>{author}</p>
+        </div>
+
+        <div className="buttonChoiceAuthor">
+          <button onClick={() => handleClickAuthor("~ Kanye West")} disabled={quoteCliked}>Ye's quote</button>
+          <button onClick={() => handleClickAuthor("~ Random")} disabled={quoteCliked}>Random author quote</button>
+        </div>
+
+        <div className="scoreboard">
+          <p>Acertos: {scoreBoard[0]}</p>
+          <p>Erros: {scoreBoard[1]}</p>
+        </div>
+
+        <div>
+          <a href="https://github.com/eriksgda/Kanye-quote-quiz">github/eriksgda</a>
+        </div>
+
+      </div>
     </div>
   );
 };
