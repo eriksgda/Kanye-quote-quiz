@@ -66,7 +66,7 @@ export function App() {
   return (
     <div className='x'>
       <header>
-        <a className='title'href="">Is Ye's Quote?🐻🌊</a>
+        <h1>Is Ye's Quote?🐻🌊</h1>
       </header>
 
       <div className="container">
