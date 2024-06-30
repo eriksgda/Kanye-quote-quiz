@@ -20,21 +20,17 @@ body{
 /*========== HEADER ==========*/
 h1{
   color: black;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-family: 'Nanum Gothic Coding', sans-serif;
   font-weight: bold;
 }
 
 header{
-
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
-
-  position: fixed;
-  width: 100%;
-  z-index: 1;
+  width: 100vw;
 }
 
 
@@ -43,9 +39,10 @@ header{
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  width: 32rem;
+  width: 100vw;
   gap: 0.5rem;
-  align-items: flex-end;
+  align-items: center;
+  margin-top: 2rem;
 
   position: absolute;
   top: 50%;
@@ -60,7 +57,6 @@ button{
   border-radius: 1rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   height: 4rem;
-  width: 12rem;
   border: none;
 }
 
@@ -79,8 +75,6 @@ button:hover{
   padding: 1rem;
   border-radius: 1rem;
   width: 100%;
-
-  margin-top: 1rem;
 }
 
 .author{
@@ -91,20 +85,26 @@ button:hover{
   display: flex;
 
   justify-content: right;
-
-  margin-bottom: 4rem;
 }
 
 .author p{
   font-size: smaller;
 }
 
+.cite{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.5rem;
+  margin: 1rem 0 4rem;
+  align-items: flex-end;
+}
+
 
 .buttonChoiceAuthor{
   display: flex;
-  justify-content: space-between;
-  padding: 0 2rem;
-
+  gap: 1rem;
+  flex-direction: column;
   width: 100%;
 }
 
@@ -117,6 +117,24 @@ button:hover{
   width: 100%;
 }
 
-a{
-  margin-right: 12rem;
+.link{
+  margin-top: 4rem;
+}
+
+@media (min-width: 750px){
+  .buttonChoiceAuthor{
+    flex-direction: row;
+    justify-content: space-around;
+
+  }
+
+  .buttonChoiceAuthor button{
+    width: 100vw;
+  }
+}
+
+@media (min-width: 1200px){
+  .container{
+    width: 50vw;
+  }
 }

@@ -64,7 +64,7 @@ export function App() {
   }
 
   return (
-    <div className='x'>
+    <div>
       <header>
         <h1>Is Ye's Quote?🐻🌊</h1>
       </header>
@@ -72,11 +72,13 @@ export function App() {
       <div className="container">
 
         <button className='buttonCreateQuote' onClick={handleClickQuote}>click</button>
-        <div className='quote'>
-          <p>{quote}</p>
-        </div>
-        <div className='author'>
-          <p className={authorClassName}>{author}</p>
+        <div className='cite'>
+          <div className='quote'>
+            <p>{quote}</p>
+          </div>
+          <div className='author'>
+            <p className={authorClassName}>{author}</p>
+          </div>
         </div>
 
         <div className="buttonChoiceAuthor">
@@ -89,8 +91,8 @@ export function App() {
           <p>Erros: {scoreBoard[1]}</p>
         </div>
 
-        <div>
-          <a href="https://github.com/eriksgda/Kanye-quote-quiz">github/eriksgda</a>
+        <div className='link'>
+          <a href="https://github.com/eriksgda/Kanye-quote-quiz">created by @eriksgda</a>
         </div>
 
       </div>
