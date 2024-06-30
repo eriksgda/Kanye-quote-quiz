@@ -60,12 +60,16 @@ button{
   border: none;
 }
 
+button:disabled{
+  cursor: not-allowed;
+}
+
 .buttonCreateQuote{
   width: 100%;
 }
 
 button:hover{
-  background-color: rgb(148, 182, 93);
+  background-color: rgb(136, 102, 77);
   border: 1px solid rgba(0, 0, 0, 0.571);
 }
 

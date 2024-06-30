@@ -17,7 +17,7 @@ export function App() {
     .then(response => response.json())
     .then(data => {
       setQuote(data.quote);
-      setAuthor("~ Kanye West");
+      setAuthor(" Kanye West");
       setQuoteClicked(false);
       setAuthorClassName("author-hidden");
     })
@@ -33,7 +33,7 @@ export function App() {
     .then(data => {
       const randomIndex: number = Math.floor(Math.random() * data.length);
       setQuote(data[randomIndex].text);
-      setAuthor("~ Random");
+      setAuthor(" Random");
       setQuoteClicked(false);
       setAuthorClassName("author-hidden");
 
@@ -61,7 +61,7 @@ export function App() {
       setScoreBoard([scoreBoard[0], scoreBoard[1] + 1]);
       setQuoteClicked(true);
     }
-  }
+  };
 
   return (
     <div>
@@ -77,13 +77,13 @@ export function App() {
             <p>{quote}</p>
           </div>
           <div className='author'>
-            <p className={authorClassName}>{author}</p>
+            <p className={authorClassName}>~{author}</p>
           </div>
         </div>
 
         <div className="buttonChoiceAuthor">
-          <button onClick={() => handleClickAuthor("~ Kanye West")} disabled={quoteCliked}>Ye's quote</button>
-          <button onClick={() => handleClickAuthor("~ Random")} disabled={quoteCliked}>Random author quote</button>
+          <button onClick={() => handleClickAuthor(" Kanye West")} disabled={quoteCliked}>Ye's quote</button>
+          <button onClick={() => handleClickAuthor(" Random")} disabled={quoteCliked}>Random author quote</button>
         </div>
 
         <div className="scoreboard">
